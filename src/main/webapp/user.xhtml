@@ -38,20 +38,22 @@
 					<p:outputLabel for="email" value="Email:" />
 					<p:inputText id="email" type="text" required="true"
 						value="#{userBean.user.email}"
-						validatorMessage="O campo deve ter '@...' e '....'! Exemplo: '@gmail' '.com'">
+						validatorMessage="O campo deve ter '@' e '.'! Exemplo: '@gmail' '.com'">
 						<f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
 						<f:ajax event="blur" render="messsages" />
 					</p:inputText>
 
 					<p:outputLabel for="password" value="Password" />
 					<p:password id="password" toggleMask="true" redisplay="true"
-						required="true" match="password2"
-						validatorMessage="As senhas estão diferentes">
+						required="true" match="password2" feedback="true">
+						<f:validateLength minimum="8" maximum="250" />
+						<f:ajax event="blur" render="messsages" />
 					</p:password>
 
 					<p:outputLabel for="password" value="Password" />
 					<p:password id="password2" toggleMask="true" redisplay="true"
 						required="true" value="#{userBean.user.password}">
+
 					</p:password>
 				</h:panelGrid>
 			</h:form>
